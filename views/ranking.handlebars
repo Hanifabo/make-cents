@@ -14,10 +14,13 @@
         <div class="panel panel-primary">
           <!-- This will hold the users box -->
           <div class="text-center panel-heading">
-            <h3 class="panel-title"><strong>Leaderboard</strong></h3>
+            <h3 class="panel-title"><strong>Leaderboard</strong></h3>   
           </div>
           <!-- This panel is where users will be displayed -->
           <div class="panel-body" id="well-storage">
+            {{#each users}}
+              <button class="btn btn-warning btn-md">{{this.id}}. {{this.name}}, {{this.email}}, {{this.phoneNumber}}</button>
+            {{/each}}
           </div>
         </div>
       </div>

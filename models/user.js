@@ -18,12 +18,9 @@ module.exports = function (sequelize, DataTypes) {
                 isEmail:true
             }
         },
-        phoneNumber: {
-            type: DataTypes.INTEGER,
-            allowNull: false,
-            validate:{
-             isNumeric:true
-            }
+        imgUrl: {
+            type: DataTypes.STRING,
+            allowNull: false
         }
     },
      {

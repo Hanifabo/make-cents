@@ -1,9 +1,4 @@
-/*=========================================================================
-*Developer:Khoi Nguyen
-*Date: 5/3/2017
-*UCSD Code Bootcamp: Homework #15
-FE js for burger
-==========================================================================*/
+
 var url = window.location.search;
 var counter = 0;
 // Constructing a newPost object to hand to the database

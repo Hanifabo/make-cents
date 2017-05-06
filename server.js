@@ -70,6 +70,9 @@ app.use(function(req, res, next) {
 // Requiring our models for syncing
 var db = require("./models");
 
+// Static directory
+app.use(express.static("./public"));
+
 // Routes =============================================================
 //require("./routes/html-routes.js")(app);
 require("./controllers/userController.js")(app);

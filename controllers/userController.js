@@ -6,10 +6,7 @@ module.exports = function(app) {
   
   app.get("/", function(req, res) {
     // Finding all-added burgers in the db
-    db.Users.findAll({}).then(function(usersInDb) {
       res.render("user");
-      //res.json(burgersInDb);
-    });
   });
 
   app.get("/users/register", function(req, res) {
@@ -23,6 +20,14 @@ module.exports = function(app) {
   app.get("/users/logout", function(req, res) {
       res.render("logout");
   });
+
+  app.get("/users/ranking", function(req, res) {
+      db.Users.findAll({}).then(function(results) {
+      res.render("ranking", {users: results});
+      //res.json(usersInDb);
+    });
+  });
+
 
   //Hanifa backend tables routes
   // app.post('/postgroup', function (req, res) {

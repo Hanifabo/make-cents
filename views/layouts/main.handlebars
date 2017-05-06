@@ -2,12 +2,16 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
+  <meta name="google-signin-client_id" content="183216533923-ijnos91eh3bk6dgd7o6dic7gbt1ufjdv.apps.googleusercontent.com">
 	<title>Login</title>
 	<!-- Latest compiled and minified CSS & JS -->
 	<link href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/flatly/bootstrap.min.css" rel="stylesheet">
-	<link rel="stylesheet" href="/css/style.css">
-  	<script src="https://code.jquery.com/jquery.js"></script>
-  	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+	
+  <link rel="stylesheet" href="../css/style.css">
+  <script type="text/javascript" src="../js/login.js"></script>
+  
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+  <script src="https://apis.google.com/js/platform.js" async defer></script>
 </head>
 	<div class="container">
       <div class="header clearfix">
@@ -24,20 +28,21 @@
 
       <div class="jumbotron">
         <p><a class="btn btn-lg btn-success" href="#" role="button">
-          Compete with Friends and make money while saving money!
+          Compete with your Friends and Make money while being super Thrifty!
         </a></p>
       </div>
       
-      <footer class="footer">
-          <p> &copy; 2017 Make-Cents Inc. </p>
-      </footer>
-
       <div class="row">
           <div class="col-lg-12">
               {{{body}}}
           </div>
       </div>
 
+      <br>
+
+      <footer class="footer">
+          <p> &copy; 2017 Make-Cents Inc. </p>
+      </footer>
     </div> <!--End of container-->
   </body>
 </html>
