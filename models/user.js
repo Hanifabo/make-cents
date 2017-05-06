@@ -25,13 +25,14 @@ module.exports = function (sequelize, DataTypes) {
              isNumeric:true
             }
         }
-    }
-    , {
-
+    },
+     {
         classMethods: {
+
             associate: function(models) {
-                Users.hasMany(models.Spendings, {
-                 onDelete: 'cascade'
+                Users.hasMany(models.Spendings,{
+                    onDelete: 'cascade',
+                    constraints: false
                 });
             }
         }
@@ -39,3 +40,9 @@ module.exports = function (sequelize, DataTypes) {
     );
     return Users;
 };
+
+// associate: function(models) {
+//     Users.hasMany(models.Spendings, {
+//      onDelete: 'cascade'
+//     });
+// },

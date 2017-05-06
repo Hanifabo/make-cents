@@ -1,7 +1,6 @@
 /**
  * Created by hanifa on 5/4/17.
  */
-
 module.exports = function (sequelize, DataTypes) {
     var Spendings = sequelize.define('Spendings',{
             groceries: {
@@ -30,13 +29,14 @@ module.exports = function (sequelize, DataTypes) {
             classMethods: {
                 associate: function(models) {
                     Spendings.belongsTo(models.Users, {
+                        constraints: false,
                         foreignKey: {
                             allowNull: false
                         }
                     });
                 }
             }
-        }
+       }
     );
     return Spendings;
 };

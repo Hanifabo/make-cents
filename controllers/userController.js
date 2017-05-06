@@ -6,7 +6,7 @@ module.exports = function(app) {
   
   app.get("/", function(req, res) {
     // Finding all-added burgers in the db
-    db.User.findAll({}).then(function(usersInDb) {
+    db.Users.findAll({}).then(function(usersInDb) {
       res.render("user");
       //res.json(burgersInDb);
     });
@@ -24,50 +24,39 @@ module.exports = function(app) {
       res.render("logout");
   });
 
+  //Hanifa backend tables routes
+  // app.post('/postgroup', function (req, res) {
+  //   db.Groups.create({
+  //       groupman: "Jhone",
+  //       groupImage:"john@gmail.com",
+  //       groupTheme:"Work Harder",
+  //   }).then(function (data) {
+  //       res.status(200).json(data);
+  //   });
+  // });
 
+  app.post('/api/post', function (req, res) {
+      db.Users.create({
+      //GroupId:1,
+      name: "Jhone",
+      email:"john@gmail.com",
+      phoneNumber: 1234567
+      }).then(function (data) {
+          res.status(200).json(data);
+      });
 
-//   app.get("/api/burgers", function(req, res) {
-//     // GET arbitrarily any buger by id
-//     db.Burger.findAll({}).then(function(foundAllBurgers) {
-//       res.json(foundAllBurgers);
-//     });
-//   });
+  });
 
-//   app.get("/api/burgers/:id", function(req, res) {
-//     // GET arbitrarily any buger by id
-//     db.Burger.findOne({
-//       where: {
-//         id: req.params.id
-//       }
-//     }).then(function(foundBurger) {
-//       res.json(foundBurger);
-//     });
-//   });
+  app.post('/api/spend', function (req, res) {
+      db.Spendings.create({
+          UserId:1,
+          groceries: 980,
+          gas:5,
+          leisure: 4
+      }).then(function (data) {
+        res.status(200).json(data);
+      });
 
-//   app.post("/api/postedBurger", function(req, res) {
-//     //npm package body-parser to access Burger model properties.
-//     db.Burger.create({
-//       burger_name: req.body.burger_name,
-//       devoured: req.body.devour
-//     }).then(function(postedBurger) {
-//       console.log(typeof postedBurger.devour);
-//       res.redirect("/");
-//     });
-//   });
-
-//   app.post("/api/updatedBurger", function(req, res) {
-//     console.log("the id is: "+ req.body.burger_id[0]);
-//     db.Burger.update({
-//       devoured: true
-//       },
-//       {
-//         where: {
-//           id: req.body.burger_id
-//         }
-//       }).then(function(updatedResult) {
-//         //console.log("in the put");
-//         res.redirect("/");
-//       });
-//   });
+  });
 };
 

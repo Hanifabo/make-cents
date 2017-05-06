@@ -80,12 +80,3 @@ db.sequelize.sync({ force: false }).then(function() {
     console.log("App listening on PORT " + PORT);
   });
 });
-
-db.sequelize.sync().then(function () {
-    // if(err) return console.log("db connection failed: "+ err);
-    app.listen(PORT, function (err) {
-        if(err) return console.log("web server failed to start");
-        console.log("server started successfully");
-    });
-
-})
