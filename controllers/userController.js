@@ -28,40 +28,126 @@ module.exports = function(app) {
     });
   });
 
+  // I added these routes..
+    app.get('/api/usergroup',function (req, res) {
+        db.user.findAll({
+            where: {
+                groupName: req.body.groupName
+            },
+            include:[
+                {
+                    model:db.group,
+                    include:[
+                        {
+                            model:db.spendings
+                        }
+                    ]
+                }
+            ]
+        }).then(function (data) {
+            res.json(data);
+        })
+    });
 
-  //Hanifa backend tables routes
-  // app.post('/postgroup', function (req, res) {
-  //   db.Groups.create({
-  //       groupman: "Jhone",
-  //       groupImage:"john@gmail.com",
-  //       groupTheme:"Work Harder",
-  //   }).then(function (data) {
-  //       res.status(200).json(data);
-  //   });
-  // });
+    app.get('/api/user/:id',function (req, res) {
+        db.user.findAll({
+            where: {
+                id: req.params.id
+            },
+            include:[
+                {
+                    model:db.group,
+                    include:[
+                        {
+                            model:db.spendings
+                        }
+                    ]
+                }
+            ]
+        }).then(function (data) {
+            res.json(data);
+        })
+    });
 
-  app.post('/api/post', function (req, res) {
-      db.Users.create({
-      //GroupId:1,
-      name: "Jhone",
-      email:"john@gmail.com",
-      phoneNumber: 1234567
-      }).then(function (data) {
-          res.status(200).json(data);
-      });
+    app.get('/api/Allusers',function (req, res) {
+        db.user.findAll({
+            include:[
+                {
+                    model:db.group,
+                    include:[
+                        {
+                            model:db.spendings
+                        }
+                    ]
+                }
+            ]
+        }).then(function (data) {
+            res.json(data);
+        })
+    });
 
-  });
+    app.post('/api/adduser', function(req, res){
+        const created_at = new Date();
+        // var date =dateFormat(created_at, "dddd, mmmm dS, yyyy");
 
-  app.post('/api/spend', function (req, res) {
-      db.Spendings.create({
-          UserId:1,
-          groceries: 980,
-          gas:5,
-          leisure: 4
-      }).then(function (data) {
-        res.status(200).json(data);
-      });
+        const newUser = req.body.user;
+        db.Users.create({
+            name: "Hanifa",
+            email:"youn@gmail.com",
+            phoneNumber: 2442324,
+            // createdAt: date,
+            //updatedAt: date,
 
-  });
+            // name: newUser.name,
+            // email: newUser.email,
+            // phoneNumber: newUser. phoneNumber,
+        })
+            .then(function(user) {
+                res.json(user);
+            });
+    });
+
+    app.post('/api/addgroup', function(req, res){
+        //const created_at = new Date();
+        // const newGroup = req.body.post;
+        db.Groups.create({
+            UserId: '1',
+            groupName: "gooing HOme",
+            groupImage:"com",
+            groupTheme:"Work Harder",
+            // UserId: newGroup.UserId,
+            // groupName: newGroup.groupman,
+            // groupImage: newGroup.groupImage,
+            // groupTheme: newGroup.groupTheme,
+        })
+            .then(function(groupData) {
+                res.json(groupData);
+            });
+    });
+
+    app.post('/api/addspending', function(req, res){
+        const created_at = new Date();
+        var total;
+        const newSpending = req.body.comment;
+        db.Spendings.create({
+            GroupId:1,
+            groceries: 980,
+            gas:5,
+            leisure: 4,
+            totalSpendings : 989
+
+            // GroupId: newSpending.GroupId,
+            // groceries: newSpending.groceries,
+            // gas: newSpending.gas,
+            // leisure: newSpending.leisure,
+            //   total: parseFloat(newSpending.groceries.trim())
+            // + parseFloat(newSpending.gas.trim())
+            //  +parseFloat(newSpending.leisure.time());
+            //  totalSpendings : total
+        }).then(function(spending){
+            res.json(spending);
+        });
+    });
+
 };
 

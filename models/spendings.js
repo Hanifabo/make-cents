@@ -3,40 +3,27 @@
  */
 module.exports = function (sequelize, DataTypes) {
     var Spendings = sequelize.define('Spendings',{
+
+            GroupId: {
+                type: DataTypes.INTEGER,
+                allowNull: false
+            },
             groceries: {
                 type: DataTypes.FLOAT,
-                validate:{
-                    len:[0, 4],
-                    isFloat:true
-                }
             },
             gas: {
                 type: DataTypes.FLOAT,
-                validate:{
-                    len:[0, 4],
-                    isFloat:true
-                }
             },
+
             leisure: {
                 type: DataTypes.FLOAT,
-                validate:{
-                    len:[0, 4],
-                    isFloat:true
-                }
+            },
+
+            totalSpendings: {
+                type: DataTypes.FLOAT,
             }
-        },
-            {
-            classMethods: {
-                associate: function(models) {
-                    Spendings.belongsTo(models.Users, {
-                        constraints: false,
-                        foreignKey: {
-                            allowNull: false
-                        }
-                    });
-                }
-            }
-       }
+        }
+
     );
     return Spendings;
 };
